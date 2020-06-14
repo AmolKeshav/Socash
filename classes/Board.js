@@ -9,6 +9,15 @@ module.exports = class Board {
     this.numberOfCardsPerPlayer = numberOfCardsPerPlayer;
   }
 
+  printDeck() {
+    let str = "";
+    console.log("============================ The Deck For the Game ======================");
+    for (let itr = 0; itr < this.deck.deck.length; itr++) {
+      str += this.deck.deck[itr].rank + " of " + this.deck.deck[itr].suit + "\n";
+    }
+    console.log(str);
+  }
+
   dealCards() {
     let numberOfPlayers = this.players.length,
       numberOfCardsPerPlayer = this.numberOfCardsPerPlayer,
@@ -24,6 +33,18 @@ module.exports = class Board {
       numberOfCardsToDraw--;
     }
   } 
+
+  printPlayerHand() {
+    console.log("============================ The Hand Dealt For each Player ======================");
+    for (let itr = 0; itr < this.players.length; itr++) {
+      
+      let str = "";
+      for (let jtr = 0; jtr < this.players[itr].hand.length; jtr++) {
+        str += this.players[itr].hand[jtr].rank + " of " + this.players[itr].hand[jtr].suit + "\n";
+      }
+      console.log("Player with Player ID: ", this.players[itr].playerId, " has following cards:\n" + str);
+    }
+  }
 
   playersEvaluateHand(winnerOrderValue) {
     for (let itr = 0; itr < this.players.length; itr++) {
@@ -66,6 +87,8 @@ module.exports = class Board {
         let card = this.deck.dealTheDeck();
         contendors[itr].emptyHand();
         contendors[itr].pickCard(card);
+
+        console.log("Player with player id: ", contendors[itr].playerId, " picked ", card.rank + " of " + card.suit);
       }
 
       for (let itr = 0; itr < contendors.length - 1; itr++) {

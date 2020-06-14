@@ -28,7 +28,7 @@ module.exports = class Player {
     if (itr == this.hand.length) {
       return {
         handPriorityValue: winnerOrderValue["TRAIL"] + highestCard.p,
-        handCat: winnerOrderValue["TRAIL"],
+        handCategory: "TRAIL",
         cardToCompare: this.hand[0] 
       }
     } else {
@@ -54,7 +54,7 @@ module.exports = class Player {
     if (sum == arithmeticSum && (highest - lowest) == this.hand.length - 1) {
       return {
         handPriorityValue: winnerOrderValue["SEQUENCE"] + highestCard.p,
-        handCategory: winnerOrderValue["SEQUENCE"],
+        handCategory: "SEQUENCE",
         cardToCompare: highestCard
       }
     } else {
@@ -78,7 +78,7 @@ module.exports = class Player {
     if (highestCard !== null) {
       return {
         handPriorityValue: winnerOrderValue["PAIR"] + highestCard.p,
-        handCategory: winnerOrderValue["PAIR"],
+        handCategory: "PAIR",
         cardToCompare: highestCard
       }
     } else {
@@ -96,7 +96,7 @@ module.exports = class Player {
 
     return {
       handPriorityValue: winnerOrderValue["HIGHEST"] + highestCard.p,
-      handCategory: winnerOrderValue["HIGHEST"],
+      handCategory: "HIGHEST",
       cardToCompare: highestCard
     }
   }
