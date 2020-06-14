@@ -15,7 +15,7 @@ const playDrunkCardGame = (deckDetails, numberOfPlayers, numberOfCardsPerPlayer)
   let board = new Board(deck, players, numberOfCardsPerPlayer);
 
   board.dealCards();
-  board.showHands();
+  board.playersEvaluateHand();
 }
 
 playDrunkCardGame(config.deckDetails, config.numberOfPlayers, config.numberOfCardsPerPlayer);

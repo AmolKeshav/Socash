@@ -25,7 +25,15 @@ module.exports = class Board {
     }
   } 
 
+  playersEvaluateHand() {
+    for (let itr = 0; itr < this.players.length; itr++) {
+      console.log("Considering Player: ", itr + 1, "\n");
+      this.players[itr].evaluateHand();
+    }
+  }
+
   showHands() {
     console.log(JSON.stringify(this.players));
+    console.log(this.deck.deck.length);
   }
 }
