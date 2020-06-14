@@ -25,6 +25,7 @@ module.exports = class Deck {
       }
     }
   }
+  
   // Using Fisher-Yates algorithm to generate a shuffled deck
   shuffleDeck() {
     const { deck } = this;

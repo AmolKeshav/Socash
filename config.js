@@ -58,5 +58,7 @@ module.exports = {
       value: 13,
       p: 12
     }]
-  }
+  },
+  numberOfPlayers: 4,
+  numberOfCardsPerPlayer: 3
 }
