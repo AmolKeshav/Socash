@@ -60,5 +60,11 @@ module.exports = {
     }]
   },
   numberOfPlayers: 4,
-  numberOfCardsPerPlayer: 3
+  numberOfCardsPerPlayer: 3,
+  winnerOrderValue: {
+    "TRAIL": 1000,
+    "SEQUENCE": 900,
+    "PAIR": 800,
+    "HIGHEST": 700
+  }
 }

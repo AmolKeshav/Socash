@@ -9,11 +9,16 @@ module.exports = class Player {
     this.handDetails = null;
   }
 
+  emptyHand() {
+    this.hand = [];
+    this.handDetails = null;
+  }
+
   pickCard(card) {
     this.hand.push(card);
   }
 
-  checkIfTrail() {
+  checkIfTrail(winnerOrderValue) {
     let itr = 1;
     while (itr < this.hand.length) {
       if (this.hand[itr - 1].rank !== this.hand[itr].rank) { break; }
@@ -22,7 +27,8 @@ module.exports = class Player {
 
     if (itr == this.hand.length) {
       return {
-        handCat: "TRAIL",
+        handPriorityValue: winnerOrderValue["TRAIL"] + highestCard.p,
+        handCat: winnerOrderValue["TRAIL"],
         cardToCompare: this.hand[0] 
       }
     } else {
@@ -30,7 +36,7 @@ module.exports = class Player {
     }
   }
 
-  checkIfSequence() {
+  checkIfSequence(winnerOrderValue) {
     let lowest = 100, highest = -1, sum = 0, arithmeticSum, highestCard;
 
     for (let itr = 0; itr < this.hand.length; itr++) {
@@ -47,7 +53,8 @@ module.exports = class Player {
 
     if (sum == arithmeticSum && (highest - lowest) == this.hand.length - 1) {
       return {
-        handCategory: "SEQUENCE",
+        handPriorityValue: winnerOrderValue["SEQUENCE"] + highestCard.p,
+        handCategory: winnerOrderValue["SEQUENCE"],
         cardToCompare: highestCard
       }
     } else {
@@ -55,7 +62,7 @@ module.exports = class Player {
     }
   }
 
-  checkIfPair() {
+  checkIfPair(winnerOrderValue) {
     let tempObject = {}, highestCard = null;
     for (let itr = 0; itr < this.hand.length; itr++) {
       if (!tempObject.hasOwnProperty(this.hand[itr].rank)) {
@@ -70,7 +77,8 @@ module.exports = class Player {
 
     if (highestCard !== null) {
       return {
-        handCategory: "PAIR",
+        handPriorityValue: winnerOrderValue["PAIR"] + highestCard.p,
+        handCategory: winnerOrderValue["PAIR"],
         cardToCompare: highestCard
       }
     } else {
@@ -78,7 +86,7 @@ module.exports = class Player {
     }
   }
 
-  checkIfTopCard() {
+  checkIfTopCard(winnerOrderValue) {
     let highestCard = this.hand[0];
     for (let itr = 1; itr < this.hand.length; itr++) {
       if (this.hand[itr].p > highestCard.p) {
@@ -87,24 +95,24 @@ module.exports = class Player {
     }
 
     return {
-      handCategory: "HIGHEST",
+      handPriorityValue: winnerOrderValue["HIGHEST"] + highestCard.p,
+      handCategory: winnerOrderValue["HIGHEST"],
       cardToCompare: highestCard
     }
   }
 
-  evaluateHand() {
+  evaluateHand(winnerOrderValue) {
     this.handDetails = null;
-    console.log("PLAYERS HAND:: ", JSON.stringify(this.hand));
-    if (this.checkIfTrail()) { 
-      this.handDetails = this.checkIfTrail(); 
-    } else if (this.checkIfSequence()) { 
-      this.handDetails = this.checkIfSequence(); 
-    } else if (this.checkIfPair()) { 
-      this.handDetails = this.checkIfPair(); 
-    } else {
-      this.handDetails = this.checkIfTopCard();
-    }
+    let val = null;
 
-    console.log(this.handDetails);
+    if (val = this.checkIfTrail(winnerOrderValue)) { 
+      this.handDetails = val; 
+    } else if (val = this.checkIfSequence(winnerOrderValue)) { 
+      this.handDetails = val; 
+    } else if (val = this.checkIfPair(winnerOrderValue)) { 
+      this.handDetails = val; 
+    } else {
+      this.handDetails = this.checkIfTopCard(winnerOrderValue);
+    }
   }
 }
