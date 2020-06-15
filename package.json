@@ -1,0 +1,23 @@
+{
+  "name": "socash",
+  "version": "1.0.0",
+  "description": "socash assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmolKeshav/Socash.git"
+  },
+  "keywords": [
+    "Card",
+    "Game"
+  ],
+  "author": "Amol Keshav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmolKeshav/Socash/issues"
+  },
+  "homepage": "https://github.com/AmolKeshav/Socash#readme"
+}
