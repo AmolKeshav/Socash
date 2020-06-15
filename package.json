@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/AmolKeshav/Socash/issues"
   },
-  "homepage": "https://github.com/AmolKeshav/Socash#readme"
+  "homepage": "https://github.com/AmolKeshav/Socash#readme",
+  "dependencies": {}
 }
