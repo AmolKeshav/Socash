@@ -4,7 +4,8 @@
   "description": "socash assignment",
   "main": "index.js",
   "scripts": {
-    "test": "mocha Tests/index.test.js"
+    "test": "mocha Tests/index.test.js",
+    "start": "node game.js"
   },
   "repository": {
     "type": "git",
