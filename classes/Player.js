@@ -27,7 +27,7 @@ module.exports = class Player {
 
     if (itr == this.hand.length) {
       return {
-        handPriorityValue: winnerOrderValue["TRAIL"] + highestCard.p,
+        handPriorityValue: winnerOrderValue["TRAIL"],
         handCategory: "TRAIL",
         cardToCompare: this.hand[0] 
       }

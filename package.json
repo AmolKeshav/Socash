@@ -4,7 +4,8 @@
   "description": "socash assignment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha Tests/index.test.js",
+    "start": "node game.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/AmolKeshav/Socash/issues"
   },
-  "homepage": "https://github.com/AmolKeshav/Socash#readme"
+  "homepage": "https://github.com/AmolKeshav/Socash#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "mocha": "^8.0.1"
+  }
 }
