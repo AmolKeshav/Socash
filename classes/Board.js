@@ -24,7 +24,7 @@ module.exports = class Board {
       numberOfCardsToDraw = numberOfCardsPerPlayer * numberOfPlayers,
       playerItr = 0;
 
-    while (numberOfCardsToDraw) {
+    while (numberOfCardsToDraw && this.deck.deck.length) {
       let card = this.deck.dealTheDeck();
       this.players[playerItr++].pickCard(card);
       if (playerItr >= this.players.length) {
@@ -64,8 +64,7 @@ module.exports = class Board {
     if (this.players[0].handDetails.handPriorityValue > this.players[1].handDetails.handPriorityValue) {
       return {
         winnerFlag: true,
-        winner: this.players[0],
-        contendors: this.players // To be removed!
+        winner: this.players[0]
       };
     } else {
       let priorityValue = this.players[0].handDetails.handPriorityValue, itr = 0, contendors = [];

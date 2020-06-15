@@ -6,9 +6,10 @@ const assert = require("assert"),
   config = require('../config'),
   Deck = require('../classes/Deck'),
   Player = require('../classes/Player'),
-  Card = require('../classes/Card');
+  Card = require('../classes/Card'),
+  Board = require('../classes/Board');
 
-describe ("Deck Test", () => {
+describe ("Deck Tests", () => {
   it ("Should be able to create a new deck", () => {
     let suite = ["Diamond"],
       rankValues = [{
@@ -26,7 +27,7 @@ describe ("Deck Test", () => {
   });
 });
 
-describe ("Player Test", () => {
+describe ("Player Tests", () => {
   it ("Should be able to create a new player", () => {
     let player = new Player(10);
 
@@ -143,4 +144,64 @@ describe ("Player Test", () => {
     assert.strictEqual(player.hand.length, 3);
     assert.strictEqual(player.handDetails.handPriorityValue, 812);
   });
+});
+
+describe ("Board Tests", () => {
+  it ("Should Test if board is created", () => {
+    let suite = ["Diamond"],
+      rankValues = [{
+        rank: "Ace",
+        value: 1,
+        p: 13
+      }, {
+        rank: "King",
+        value: 13,
+        p: 12
+      }];
+    let deck = new Deck(suite, rankValues);
+
+    assert.strictEqual(deck.deck.length, 2);
+
+    let player = new Player(10);
+
+    assert.strictEqual(player.playerId, 10);
+    assert.strictEqual(player.hand.length, 0);
+    assert.strictEqual(player.handDetails, null);
+
+    let board = new Board(deck, [player], 3);
+
+    assert.strictEqual(board.deck.deck.length, 2);
+    assert.strictEqual(board.players.length, 1);
+  });
+
+  it ("Should Test if players dealt cards", () => {
+    let suite = ["Diamond"],
+      rankValues = [{
+        rank: "Ace",
+        value: 1,
+        p: 13
+      }, {
+        rank: "King",
+        value: 13,
+        p: 12
+      }];
+    let deck = new Deck(suite, rankValues);
+
+    assert.strictEqual(deck.deck.length, 2);
+
+    let player = new Player(10);
+
+    assert.strictEqual(player.playerId, 10);
+    assert.strictEqual(player.hand.length, 0);
+    assert.strictEqual(player.handDetails, null);
+
+    let board = new Board(deck, [player], 3);
+
+    assert.strictEqual(board.deck.deck.length, 2);
+    assert.strictEqual(board.players.length, 1);
+
+    board.dealCards();
+    assert.strictEqual(board.players[0].hand.length, 2);
+    assert.strictEqual(board.deck.deck.length, 0);
+  })
 })
