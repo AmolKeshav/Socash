@@ -24,6 +24,6 @@
   "dependencies": {},
   "devDependencies": {
     "assert": "^2.0.0",
-    "mocha": "^8.0.1"
+    "mocha": "^8.4.0"
   }
 }
